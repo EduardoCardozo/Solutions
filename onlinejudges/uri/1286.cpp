@@ -1,46 +1,36 @@
-#include <cstdio>
-#include <cstring>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
-#define MAXN 500
 
-int peso[MAXN], valor[MAXN], memo[MAXN][MAXN], n;
+#define MAXN 50
+int pd[MAXN][MAXN], tp[MAXN], qtp[MAXN], n,p;
 
-int m(int pedido, int cap)
+int knapsack(int i, int val)
 {
-	if(memo[pedido][cap] >=0) return memo[pedido][cap];
+  if(pd[i][val]>=0)return pd[i][val];
+  if(i==n or val==0)return pd[i][val]=0;
 
-	if(pedido == n || !cap) return memo[pedido][cap] = 0;
+  int nc=knapsack(i+1, val);
 
-	int nao_pega = m(pedido+1, cap);
+  if(qtp[i]<=val)
+    return pd[i][val]=max(nc,tp[i]+knapsack(i+1,val-qtp[i]));
 
-	if(peso[pedido] <= cap)
-	{
-		int pega = valor[pedido] + m(pedido+1, cap - peso[pedido]);
-
-		return memo[pedido][cap] = max(pega, nao_pega);
-	}
-	return memo[pedido][cap] = nao_pega;
+  return pd[i][val]=nc;
 }
-
 int main()
 {
-	int p;
+  while(true)
+  {
+    scanf("%d %d", &n, &p);
+    if(n==0)break;
 
-	while(scanf("%d", &n))
-	{
-		if(n == 0)break;
-		
-		scanf("%d", &p);
-		
-		memset(memo, -1, sizeof(memo));
+    for(int i=0;i<n+4;i++)
+      for(int j=0;j<p+4;j++)
+        pd[i][j]=-1;
 
-		for(int i = 0; i < n; i++)
-			scanf("%d %d", &valor[i], &peso[i]);
+    for(int i=0; i<n;i++)
+      scanf("%d %d", &tp[i], &qtp[i]);
 
-		printf("%d min.\n", m(0, p));
-	}
-	return 0;
+    printf("%d min.\n", knapsack(0,p));
+  }
+  return 0;
 }
-
-
