@@ -1,57 +1,46 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
-#define MAXN 10020
-int praia[MAXN];
-int main()
-{
-  int p, s, test=1;
+typedef pair<int,int> pii;
 
-  while(true)
-  {
+int n,m;
 
-    scanf("%d %d", &p, &s);
-    if(!p and !s)break;
-    memset(praia, 0, sizeof(praia));
+int main(){
 
-    for(int i=0;i<s;i++)
-    {
-      int a, b;
-      scanf("%d %d", &a, &b);
-      for(int j=a;j<=b;j++)praia[j]++;
-    }
-    printf("Teste %d\n", test++);
+	int teste=1;
 
-    int flag=0, l, r;
-    for(int i=0;i<=p;i++)
-    {
-      if(praia[i]==0)
-      {
-        if(flag)
-        {
-          printf("%d\n", i-1);
-          flag=0;
-        }
-      }
-      else
-      {
-        if(flag)
-        {
-          if(praia[i]!=praia[i-1])
-          {
-            printf("%d %d\n", l, r);
-          }
-          flag=1;
-          printf("%d ", i);
-        }
-        else
-        {
-            l=i;
-        }
-        if(i==p)printf("%d\n", i);
-      }
+	scanf("%d %d",&n,&m);
 
+	while(true){
+		scanf("%d %d",&n,&m);
+		if(!n and !m)break;
 
-    }
-  }
+		set<pii> praia;
+		
+		while(m--){
+			int u,v;
+			scanf("%d%d",&u,&v);
+			praia.insert({u,v});
+		}
+
+		int in=praia.begin()->first;
+		
+		int mf=praia.begin()->second;
+
+		printf("Teste %d\n",teste++);
+		for(auto it:praia){
+			if(it.first>mf){
+				printf("%d %d\n", in,mf);
+				in=it.first;
+				mf=it.second;
+			}
+			else if(mf < it.second)mf=it.second;	
+		}
+		printf("%d %d\n\n", in,mf);
+		
+		scanf("%d%d",&n,&m);
+	}	
+
+	
 }
