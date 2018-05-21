@@ -1,74 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define REP(i, a, b) \
-	for(int i = int(a); i <= int(b);i++)
-
-#define REPI(i, a, b) \
-	for(int i = int(a); i >= int(b);i--)
-
 #define MAXN 150
-int tab[MAXN][MAXN];
-int qtdC[MAXN];
+char tab[MAXN][MAXN];
+
 int main()
 {
 	int n;
-	scanf("%d\n", &n);
-	char x;
+	scanf("%d", &n);
 
-	REP(i, 1, n)
-	{
-		REP(j, 1, n)
-		{
-			scanf("%c\n", &x);
-			
-			if(x == 'o')
-				tab[i][j]=1;
-			else if(x  == 'A')
-				tab[i][j]=2;			
-		}
-	}
+	for(int i=1;i<=n;i++)
+		for(int j=1;j<=n;j++)
+			scanf(" %c", &tab[i][j]);
 
-	priority_queue<int> qtdmax;
-	int comida = 0;
-	REP(i, 1, n)
+	int comida = 0, resp=0;
+	for(int i=1;i<=n;i++)
 	{
-		if(i%2==0)
-		{
-			REPI(j, n, 1)
-			{
-				if(tab[i][j] == 1)
-				{	
-					comida++;
-				}
-				else if(tab[i][j] == 2)
+		if(i%2==0){
+			for(int j=n;j>0;j--)
+				if(tab[i][j] == 'o')comida++;
+				else if(tab[i][j] == 'A')
 				{
-					
-					qtdmax.push(comida);
+					resp=max(resp, comida);
 					comida = 0;
 				}
 			}
-		}
-		else
-		{
-			REP(j, 1, n)
-			{
-				if(tab[i][j] == 1)
+		else{
+			for(int j=1;j<=n;j++)
+				if(tab[i][j] == 'o')comida++;
+				else if(tab[i][j] == 'A')
 				{
-					comida++;
-					
-				}
-				else if(tab[i][j] == 2)
-				{
-					
-					qtdmax.push(comida);
+					resp=max(resp, comida);
 					comida = 0;
 				}
 			}
-		}
 	}
-	qtdmax.push(comida);
-	printf("%d\n", qtdmax.top());
-
+	printf("%d\n", max(resp, comida));
 	return 0;
 }
