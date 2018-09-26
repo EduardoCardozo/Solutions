@@ -27,5 +27,3 @@ __builtin_clz(int)//Retorna o número de zeros na frente do bit 1 mais significa
 __builtin_ctz(int)//Retorna o número de zeros atrás do bit 1 menos significativo
 __builtin_popcount(int)//Soma dos bits
 __builtin_parity(int)//Soma dos bits módulo 2
-
-int main(){}
