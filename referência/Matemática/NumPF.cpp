@@ -2,7 +2,8 @@
 //Usar crivo antes para vector de primos
 //Quantidade de Fatores primos de N
 
-typedef long long ll;
+using ll=long long;
+
 
 ll numpf(ll n){
   ll pfid=0, pf=primes[0], ans=0;

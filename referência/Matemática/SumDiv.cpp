@@ -3,7 +3,7 @@
 //Usar crivo antes para vector de primos
 //Soma dos divisores de N
 
-typedef long long ll;
+using ll=long long;
 
 ll sumdiv(ll n){
   ll pfid=0, pf=primes[0], ans=1;

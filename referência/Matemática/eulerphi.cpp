@@ -2,7 +2,8 @@
 //Usar crivo antes para vector de primos
 //Quantidade de numeros menores que N e que gcd(i, N)=1
 
-typedef long long ll;
+using ll=long long;
+
 
 ll EulerPhi(ll n){
   ll pfid=0, pf=primes[0], ans=n;

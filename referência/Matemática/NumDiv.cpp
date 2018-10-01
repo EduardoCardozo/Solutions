@@ -1,7 +1,8 @@
 
 //Usar crivo antes para vector de primos
 //Quantidade de divisores de N
-typedef long long ll;
+
+using ll=long long;
 
 ll numdiv(ll n){
   ll pfid=0, pf=primes[0], ans=1;

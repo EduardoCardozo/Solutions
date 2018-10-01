@@ -1,7 +1,7 @@
 
 
 
-typedef long long ll;
+using ll=long long;
 
 ll exp(ll b, ll e, ll mod){
   ll ans=1;

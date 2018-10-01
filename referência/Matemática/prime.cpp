@@ -1,5 +1,6 @@
 
-typedef unsigned long long ll;
+
+using ll=long long;
 
 bool isPrime(ll n){
   if(n<0)n=-n;

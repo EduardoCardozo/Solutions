@@ -1,11 +1,12 @@
-
-
-
 // Árvore Geradora Mínima usando Union-Find em O(E logV)
-typedef pair<int, int> ii;
-typedef long long ll;
+
+
 #define nd second
 #define st first
+
+using ll=long long;
+using ii=pair<int,int>;
+
 int n, M;
 vector<pair<ll, ii> > arestas;// (peso, u, v)
 

@@ -1,13 +1,13 @@
 
 // Linear Sieve
-typedef long long ll;
+using ll=long long;
 bitset<10000010> bs;
 vector<ll> primes;
 
 void sieve(ll n)
 {
   bs.reset();bs.flip();
-  bs.set(0, false);bs.set(1, true);
+  bs.set(0, false);bs.set(1, false);
 
   for(ll i=2;i<=n;i++)
   {

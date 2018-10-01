@@ -1,8 +1,8 @@
 
 #define nd second
 #define st first
-typedef vector<int> vi;
 
+using vi=vector<int>;
 const int inf=0x3f3f3f3f, N=100001;
 
 vector<pair<int, int> > adj[N];

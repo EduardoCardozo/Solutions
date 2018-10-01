@@ -1,6 +1,6 @@
 
 
-typedef long long ll;
+using ll=long long;
 
 ll exp(ll b, ll e){
   ll ans=1;
