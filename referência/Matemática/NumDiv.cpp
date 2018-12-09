@@ -1,17 +1,14 @@
-
-//Usar crivo antes para vector de primos
-//Quantidade de divisores de N
-
-using ll=long long;
-
-ll numdiv(ll n){
-  ll pfid=0, pf=primes[0], ans=1;
-  while(pf*pf<=n){
-    ll power=0;
-    while(!(n%pf)){n/=pf;power++;}
-    ans*=(power+1);
-    pf=primes[++pfid];
-  }
-  if(n!=-1)ans*=2;
-  return ans;
+long long NumDiv(long long n){
+    long long idx = 0, prime_factors = primes[idx], ans = 1;
+    while (prime_factors * prime_factors <= n) {
+        long long power = 0;
+        while (n % prime_factors == 0) {
+            n /= prime_factors;
+            power++;
+        }
+        ans *= (power + 1);
+        prime_factors = primes[++idx];
+    }
+    if (n != 1) ans *= 2;
+    return ans;
 }
